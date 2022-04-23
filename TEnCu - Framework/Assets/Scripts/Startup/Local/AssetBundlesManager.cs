@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Startup.Local
 {
-    public static class LoadAssetBundles
+    public static class AssetBundlesManager
     {
         private const string AssetBundlePath = "AssetBundles/";
         public static void LoadAllAssetBundlesFromStorage()
