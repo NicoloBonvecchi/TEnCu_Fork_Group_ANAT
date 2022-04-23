@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Models.ModelConfigurations
 {
+    [Serializable]
     public class Coordinates
     {
         public float x;

@@ -1,5 +1,8 @@
-﻿namespace Models.ModelConfigurations
+﻿using System;
+
+namespace Models.ModelConfigurations
 {
+    [Serializable]
     public class CameraConfigs
     {
         public Coordinates position;
