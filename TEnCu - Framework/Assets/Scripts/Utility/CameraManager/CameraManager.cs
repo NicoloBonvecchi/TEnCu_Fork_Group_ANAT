@@ -59,7 +59,7 @@ namespace Utility.CameraManager
         
         protected static float ClampInAngles(float value, float min, float max)
         {
-            //360°-max è più vicino a min che a max
+            //360°-max is closer to min then max
             if (value < (double)min || value > 360 - max)
                 value = min;
             else if (value > (double)max)
