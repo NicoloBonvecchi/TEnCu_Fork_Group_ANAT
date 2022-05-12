@@ -14,7 +14,7 @@ namespace Startup.Local
                 var assetBundle = AssetBundle.LoadFromFile(filename);
                 if (assetBundle == null)
                 {
-                    Debug.LogError("Failed to load asset bundle: " + filename + " " + assetBundle.name);
+                    Debug.LogError("Failed to load asset bundle: " + filename);
                     continue;
                 }
                 Utility.LocalStorageManager.AssetBundleManager.Instance.

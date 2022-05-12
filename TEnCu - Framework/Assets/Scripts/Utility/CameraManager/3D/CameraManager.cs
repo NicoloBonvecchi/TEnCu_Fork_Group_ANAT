@@ -5,7 +5,7 @@ namespace Utility.CameraManager._3D
 {
     public class CameraManager : Utility.CameraManager.CameraManager
     {
-        protected sealed override void ManageInput()
+        protected override void ManageInput()
         {
             switch (Input.touchCount)
             {
@@ -41,7 +41,7 @@ namespace Utility.CameraManager._3D
             }
         }
 
-        protected override void Scroll(Vector2 deltaPosition)
+        protected sealed override void Scroll(Vector2 deltaPosition)
         {
             var xAngleRotation = deltaPosition.x * cameraConfigs.speedModifier.rotation;
             var yAngleRotation = deltaPosition.y * cameraConfigs.speedModifier.rotation;
