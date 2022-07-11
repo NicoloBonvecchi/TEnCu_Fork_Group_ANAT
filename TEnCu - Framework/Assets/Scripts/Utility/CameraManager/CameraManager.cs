@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Utility.CameraManager
 {
-    public class CameraManager : MonoBehaviour
+    public abstract class CameraManager : MonoBehaviour
     {
         public CameraConfigs cameraConfigs;
         public Camera cam;
@@ -53,10 +53,8 @@ namespace Utility.CameraManager
             transform.position = currentCameraPosition;
         }
 
-        protected virtual void Scroll(Vector2 deltaPosition)
-        {
-        }
-        
+        protected abstract void Scroll(Vector2 deltaPosition);
+
         protected static float ClampInAngles(float value, float min, float max)
         {
             //360°-max is closer to min then max
