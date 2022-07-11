@@ -28,11 +28,11 @@ namespace Utility.CameraManager
 
         protected virtual void ManageInput() { }
 
-        protected void Zoom(float zoomDelta)
+        protected void Zoom(float deltaZoom)
         {
-            if (zoomDelta > 0)
+            if (deltaZoom > 0)
                 _fieldOfView -= 1;
-            else if (zoomDelta < 0) _fieldOfView += 1;
+            else if (deltaZoom < 0) _fieldOfView += 1;
 
             _fieldOfView = Mathf.Clamp(_fieldOfView, cameraConfigs.fieldOfView.min, cameraConfigs.fieldOfView.max);
             cam.fieldOfView = _fieldOfView;
