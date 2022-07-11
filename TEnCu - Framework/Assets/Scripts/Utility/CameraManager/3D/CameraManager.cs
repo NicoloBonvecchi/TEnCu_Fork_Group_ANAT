@@ -33,8 +33,10 @@ namespace Utility.CameraManager._3D
                         var touchOneCurrentPosition = touchOne.position;
                         var touchZeroPreviousPosition = touchZeroCurrentPosition - touchZero.deltaPosition;
                         var touchOnePreviousPosition = touchOneCurrentPosition - touchOne.deltaPosition;
-                        Zoom(touchZeroCurrentPosition, touchOneCurrentPosition, touchZeroPreviousPosition,
-                            touchOnePreviousPosition);
+                        var previousPositionsMagnitude = (touchZeroPreviousPosition - touchOnePreviousPosition).magnitude;
+                        var currentPositionsMagnitude = (touchZeroCurrentPosition - touchOneCurrentPosition).magnitude;
+                        var magnitudeDifference = currentPositionsMagnitude - previousPositionsMagnitude;
+                        Zoom(magnitudeDifference);
                     }
 
                     break;

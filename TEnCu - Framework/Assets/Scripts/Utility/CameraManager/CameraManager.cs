@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Utility.CameraManager
 {
-    public class CameraManager : MonoBehaviour
+    public abstract class CameraManager : MonoBehaviour
     {
         public CameraConfigs cameraConfigs;
         public Camera cam;
@@ -28,15 +28,11 @@ namespace Utility.CameraManager
 
         protected virtual void ManageInput() { }
 
-        protected void Zoom(Vector2 currentPosition1, Vector2 currentPosition2, Vector2 previousPosition1, Vector2 previousPosition2)
+        protected void Zoom(float deltaZoom)
         {
-            // zoom movement detected
-            var previousPositionsMagnitude = (previousPosition1 - previousPosition2).magnitude;
-            var currentPositionsMagnitude = (currentPosition1 - currentPosition2).magnitude;
-            var magnitudeDifference = currentPositionsMagnitude - previousPositionsMagnitude;
-            if (magnitudeDifference > 0)
+            if (deltaZoom > 0)
                 _fieldOfView -= 1;
-            else if (magnitudeDifference < 0) _fieldOfView += 1;
+            else if (deltaZoom < 0) _fieldOfView += 1;
 
             _fieldOfView = Mathf.Clamp(_fieldOfView, cameraConfigs.fieldOfView.min, cameraConfigs.fieldOfView.max);
             cam.fieldOfView = _fieldOfView;
@@ -53,10 +49,8 @@ namespace Utility.CameraManager
             transform.position = currentCameraPosition;
         }
 
-        protected virtual void Scroll(Vector2 deltaPosition)
-        {
-        }
-        
+        protected abstract void Scroll(Vector2 deltaPosition);
+
         protected static float ClampInAngles(float value, float min, float max)
         {
             //360°-max is closer to min then max
