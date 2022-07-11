@@ -28,15 +28,11 @@ namespace Utility.CameraManager
 
         protected virtual void ManageInput() { }
 
-        protected void Zoom(Vector2 currentPosition1, Vector2 currentPosition2, Vector2 previousPosition1, Vector2 previousPosition2)
+        protected void Zoom(float zoomDelta)
         {
-            // zoom movement detected
-            var previousPositionsMagnitude = (previousPosition1 - previousPosition2).magnitude;
-            var currentPositionsMagnitude = (currentPosition1 - currentPosition2).magnitude;
-            var magnitudeDifference = currentPositionsMagnitude - previousPositionsMagnitude;
-            if (magnitudeDifference > 0)
+            if (zoomDelta > 0)
                 _fieldOfView -= 1;
-            else if (magnitudeDifference < 0) _fieldOfView += 1;
+            else if (zoomDelta < 0) _fieldOfView += 1;
 
             _fieldOfView = Mathf.Clamp(_fieldOfView, cameraConfigs.fieldOfView.min, cameraConfigs.fieldOfView.max);
             cam.fieldOfView = _fieldOfView;
