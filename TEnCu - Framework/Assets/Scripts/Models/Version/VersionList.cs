@@ -41,6 +41,13 @@ namespace Models.Version
             return result;
         }
 
+        public static VersionList operator +(VersionList v1, VersionList v2)
+        {
+            var output = (VersionList)v1.Clone();
+            output.versionList.AddRange(v2.versionList);
+            return output;
+        }
+        
         public object Clone()
         {
             var result = new VersionList();

@@ -27,15 +27,19 @@ namespace Startup.Download
             var localVersionList = GetLocalVersionList();
             if(localVersionList == null)
                 yield break;
-
+            
             var localVersionsToUpdate = localVersionList & remoteVersionList;
             DownloadAll(localVersionsToUpdate);
+            var updatedVersions = localVersionsToUpdate;
             if (downloadAllAssetBundles)
             {
                 var missingVersions = remoteVersionList - localVersionList;
                 DownloadAll(missingVersions);
+                updatedVersions += missingVersions;
             }
 
+            var text = JsonUtility.ToJson(updatedVersions);
+            Local.TextManager.SaveTextToFile(localVersionFilePath, text);
             yield return null;
         }
 
@@ -72,7 +76,6 @@ namespace Startup.Download
                 return JsonUtility.FromJson<VersionList>(remoteVersionText);
             Debug.LogError("remote version file is empty");
             return null;
-
         }
     }
 }

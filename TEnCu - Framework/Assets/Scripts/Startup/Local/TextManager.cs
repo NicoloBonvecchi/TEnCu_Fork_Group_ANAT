@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Startup.Local
 {
-    public class TextManager
+    public static class TextManager
     {
         public static string LoadLocalTextFromFile(string path, UnityAction onFileNotPresent = null)
         {

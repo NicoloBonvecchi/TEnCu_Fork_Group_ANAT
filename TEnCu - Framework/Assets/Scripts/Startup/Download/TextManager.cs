@@ -3,7 +3,7 @@ using UnityEngine.Networking;
 
 namespace Startup.Download
 {
-    public class TextManager
+    public static class TextManager
     {
         public static string LoadRemoteText(string url)
         {
