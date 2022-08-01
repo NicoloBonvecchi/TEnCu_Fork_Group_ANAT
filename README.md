@@ -47,6 +47,6 @@ This is a brief description of how to use the framework, a more specified versio
 7. Enjoy you app
 
 # Bugs and Feedback
-For bugs, please use the [GitHub Issues](https://github.com/UnicamPlayGround/TEnCu/issues).
+For bugs or to suggest new features, please use the [GitHub Issues](https://github.com/UnicamPlayGround/TEnCu/issues).
 <br/>
 For questions and discussions, please use the [Github Discussions](https://github.com/UnicamPlayGround/TEnCu/discussions).
