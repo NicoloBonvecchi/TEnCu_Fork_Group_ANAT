@@ -1,20 +1,31 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: "[Feature] Short Feature Description"
-labels: enhancement
+title: "[FEATURE] Short Feature Description"
+labels: feature
 assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+**Feature Long Description**
+A clear and in depth description of what the feature is.
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+**Feature use Example**
+A clear description of when the feature could be used.
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+**Describe alternatives to this feature**
+A clear and concise description of any alternative solutions or already present features you've considered.
+
+**System Related Data:**
+- Unity Version: [e.g. 2020.2.1f1] 
+- OS Name: [e.g. Windows/MacOS X]
+- OS Version: [e.g. 10]
 
 **Additional context**
-Add any other context or screenshots about the feature request here.
+Add any other context or information about the problem here.
+
+**List of Developers**
+This feature will be implemented by the following Developers:
+- @GithubProfileTag
+
+> **NOTE**: Leave the list empty if you don't want to propose specific developer(s) to implement this feature
