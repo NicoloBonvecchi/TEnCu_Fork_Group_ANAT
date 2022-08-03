@@ -17,16 +17,19 @@ Steps to reproduce the behavior:
 3. Scroll down to '....'
 4. See error
 
+**Specific example of the bug**
+Specific steps to demonstrare the bug, even including screenshots, animated gifs or code snippets
+
+**Observed Behavior**
+A clear and concise description of what happens.
+
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-**Unity & Computer Data (please complete the following information):**
+**System Related Data:**
 - Unity Version: [e.g. 2020.2.1f1] 
-- OS: [e.g. Windows/MacOS X]
+- OS Name: [e.g. Windows/MacOS X]
 - OS Version: [e.g. 10]
 
 **Additional context**
-Add any other context about the problem here.
+Add any other context or information about the problem here.
