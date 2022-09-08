@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class LoadPrefab : MonoBehaviour
 {
+#test
     public GameObject cameraObject;
     private void Awake()
     {
