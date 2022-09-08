@@ -5,7 +5,7 @@ namespace Utility.CameraManager
 {
     public abstract class CameraManager : MonoBehaviour
     {
-        public CameraConfigs cameraConfigs;
+        public CameraConfigs CameraConfigs;
         public Camera cam;
         public GameObject trigger;
         protected const float ThresholdSwipe = 10F;

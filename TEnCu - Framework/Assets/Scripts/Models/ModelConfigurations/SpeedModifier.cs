@@ -7,5 +7,6 @@ namespace Models.ModelConfigurations
     {
         public float rotation;
         public float translation;
+        public float zoom;
     }
 }
