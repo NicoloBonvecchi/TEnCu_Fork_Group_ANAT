@@ -30,6 +30,8 @@ namespace Utility.CameraManager
 
         protected void Zoom(float deltaZoom)
         {
+
+            //PREVIOUS CODE
             /*if (deltaZoom > 0)
                 _fieldOfView -= 1;
             else if (deltaZoom < 0) _fieldOfView += 1;*/
