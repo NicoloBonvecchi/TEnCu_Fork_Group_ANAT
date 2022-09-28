@@ -14,14 +14,14 @@ public class LoadPrefab : MonoBehaviour
     {
         if (prefabName == string.Empty)
         {
-            Utility.ChangeScene.ChangeToScene(Utility.CommonVariables.HOME_SCENE);
+            Utility.ChangeScene.ChangeToScene(Utility.CommonVariables.HomeScene);
             return;
         }
 
         var assetBundle = Utility.LocalStorageManager.AssetBundleManager.Instance.
             LoadAssetBundle(prefabName, () =>
         {
-            Utility.ChangeScene.ChangeToScene(Utility.CommonVariables.HOME_SCENE);
+            Utility.ChangeScene.ChangeToScene(Utility.CommonVariables.HomeScene);
         });
 
         var prefab = assetBundle.LoadAllAssets<GameObject>()[0];
