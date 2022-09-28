@@ -27,7 +27,7 @@ public class LoadPrefab : MonoBehaviour
         var prefab = assetBundle.LoadAllAssets<GameObject>()[0];
         var prefabConfigurationsText = assetBundle.LoadAllAssets<TextAsset>()[0];
         var prefabConfigurations = JsonUtility.FromJson<ModelConfigs>(prefabConfigurationsText.text);
-        SetupCamera(prefabConfigurations);
+        SetupCamera(prefab, prefabConfigurations);
         SetupPrefab(prefab, prefabConfigurations);
     }
 
@@ -43,7 +43,7 @@ public class LoadPrefab : MonoBehaviour
         OnAfterSetupPrefab(instantiated);
     }
     protected virtual void OnAfterSetupPrefab(GameObject prefab) { }
-    private void SetupCamera(ModelConfigs prefabConfigurations)
+    private void SetupCamera(GameObject prefab, ModelConfigs prefabConfigurations)
     {
         //setup camera transform
         cameraObject.transform.position = prefabConfigurations.prefab.position.GetVector3();
@@ -57,6 +57,7 @@ public class LoadPrefab : MonoBehaviour
         //setup CameraManager
         var cameraManager = cameraObject.GetComponent<Utility.CameraManager.CameraManager>();
         cameraManager.cameraConfigs = prefabConfigurations.camera;
+        cameraManager.model = prefab;
 
         OnAfterSetupCamera(cameraObject);
     }

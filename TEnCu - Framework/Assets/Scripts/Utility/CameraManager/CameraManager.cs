@@ -8,6 +8,7 @@ namespace Utility.CameraManager
         public CameraConfigs cameraConfigs;
         public Camera cam;
         public GameObject trigger;
+        public GameObject model;
         protected const float ThresholdSwipe = 10F;
         protected const float MaximumDifferenceBetweenFingersDuringSlide = 10F;
         private float _fieldOfView;
@@ -38,6 +39,11 @@ namespace Utility.CameraManager
             cam.fieldOfView = _fieldOfView;
         }
 
+        protected void TranslateModel(Vector3 deltas)
+        {
+            model.transform.Translate(deltas);
+        }
+        
         protected void TranslateY(float deltaY)
         {
             var currentCameraPosition = transform.position;
