@@ -25,7 +25,7 @@ namespace Utility.CameraManager._3D
                         touchZero.deltaPosition.y - touchOne.deltaPosition.y <
                         MaximumDifferenceBetweenFingersDuringSlide)
                     {
-                        TranslateY(touchZero.deltaPosition.y);
+                        TranslateCamera(new Vector3(0, touchZero.deltaPosition.y, 0));
                     }
                     else
                     {
