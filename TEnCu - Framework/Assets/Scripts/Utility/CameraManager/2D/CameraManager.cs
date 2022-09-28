@@ -30,8 +30,8 @@ namespace Utility.CameraManager._2D
 
         protected sealed override void Scroll(Vector2 deltaPosition)
         {
-            var xTranslation = deltaPosition.x * cameraConfigs.speedModifier.rotation;
-            var yTranslation = deltaPosition.y * cameraConfigs.speedModifier.rotation;
+            var xTranslation = deltaPosition.x * modelConfigs.camera.speedModifier.rotation;
+            var yTranslation = deltaPosition.y * modelConfigs.camera.speedModifier.rotation;
 
             xTranslation = Mathf.Round(xTranslation);
             yTranslation = Mathf.Round(yTranslation);
@@ -39,8 +39,8 @@ namespace Utility.CameraManager._2D
             var currentPosition = cam.transform.position + new Vector3(-xTranslation, -yTranslation, 0);
 
             //clamp new values between bounds
-            var fixedX = Mathf.Clamp(currentPosition.x, cameraConfigs.height.min, cameraConfigs.height.max);
-            var fixedY = Mathf.Clamp(currentPosition.y, cameraConfigs.width.min, cameraConfigs.width.max);
+            var fixedX = Mathf.Clamp(currentPosition.x, modelConfigs.camera.height.min, modelConfigs.camera.height.max);
+            var fixedY = Mathf.Clamp(currentPosition.y, modelConfigs.camera.width.min, modelConfigs.camera.width.max);
 
             //set camera again with fixed values
             cam.transform.position = new Vector3(fixedX, fixedY, currentPosition.z);

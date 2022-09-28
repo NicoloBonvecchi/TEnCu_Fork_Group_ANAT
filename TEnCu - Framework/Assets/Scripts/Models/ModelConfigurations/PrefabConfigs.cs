@@ -8,5 +8,9 @@ namespace Models.ModelConfigurations
         public Coordinates position;
         public Coordinates eulerRotation;
         public Coordinates scale;
+        public MinMax width;
+        public MinMax height;
+        public MinMax depth;
+        public SpeedModifier speedModifier;
     }
 }
