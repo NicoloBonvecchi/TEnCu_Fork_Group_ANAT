@@ -56,7 +56,7 @@ public class LoadPrefab : MonoBehaviour
         
         //setup CameraManager
         var cameraManager = cameraObject.GetComponent<Utility.CameraManager.CameraManager>();
-        cameraManager.cameraConfigs = prefabConfigurations.camera;
+        cameraManager.modelConfigs = prefabConfigurations;
         cameraManager.model = prefab;
 
         OnAfterSetupCamera(cameraObject);

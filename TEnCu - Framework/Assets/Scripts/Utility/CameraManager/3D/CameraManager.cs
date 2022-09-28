@@ -45,8 +45,8 @@ namespace Utility.CameraManager._3D
 
         protected sealed override void Scroll(Vector2 deltaPosition)
         {
-            var xAngleRotation = deltaPosition.x * cameraConfigs.speedModifier.rotation;
-            var yAngleRotation = deltaPosition.y * cameraConfigs.speedModifier.rotation;
+            var xAngleRotation = deltaPosition.x * modelConfigs.camera.speedModifier.rotation;
+            var yAngleRotation = deltaPosition.y * modelConfigs.camera.speedModifier.rotation;
             xAngleRotation = Mathf.Round(xAngleRotation);
             yAngleRotation = Mathf.Round(yAngleRotation);
             //set camera (angoli x e y invertiti perchè lo schermo è in modalità landscape)
@@ -56,7 +56,7 @@ namespace Utility.CameraManager._3D
             var currentEulerRotation = transform.rotation.eulerAngles;
 
             //clamp new values between bounds
-            var fixedX = ClampInAngles(currentEulerRotation.x, cameraConfigs.angle.min, cameraConfigs.angle.max);
+            var fixedX = ClampInAngles(currentEulerRotation.x, modelConfigs.camera.angle.min, modelConfigs.camera.angle.max);
 
             //no need to modify y, rotation over y is just going around model
             //no need to modify z, rotation over z is fixed automatically
