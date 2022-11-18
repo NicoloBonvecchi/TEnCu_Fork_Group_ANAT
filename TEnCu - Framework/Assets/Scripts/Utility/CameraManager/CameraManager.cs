@@ -1,13 +1,15 @@
-﻿using Models.ModelConfigurations;
+using System;
+using Models.ModelConfigurations;
 using UnityEngine;
 
 namespace Utility.CameraManager
 {
     public abstract class CameraManager : MonoBehaviour
     {
-        public CameraConfigs cameraConfigs;
+        public ModelConfigs modelConfigs;
         public Camera cam;
         public GameObject trigger;
+        public GameObject model;
         protected const float ThresholdSwipe = 10F;
         protected const float MaximumDifferenceBetweenFingersDuringSlide = 10F;
         private float _fieldOfView;
@@ -30,25 +32,45 @@ namespace Utility.CameraManager
 
         protected void Zoom(float deltaZoom)
         {
-            /*if (deltaZoom > 0)
-                _fieldOfView -= 1;
-            else if (deltaZoom < 0) _fieldOfView += 1;*/
-
             if (deltaZoom > 0)
-                _fieldOfView -= cameraConfigs.speedModifier.zoom;
-            else if (deltaZoom < 0) _fieldOfView += cameraConfigs.speedModifier.zoom;
+                _fieldOfView -= 1;
+            else if (deltaZoom < 0) _fieldOfView += 1;
 
-            _fieldOfView = Mathf.Clamp(_fieldOfView, cameraConfigs.fieldOfView.min, cameraConfigs.fieldOfView.max);
+            _fieldOfView = Mathf.Clamp(_fieldOfView, modelConfigs.camera.fieldOfView.min, modelConfigs.camera.fieldOfView.max);
             cam.fieldOfView = _fieldOfView;
         }
 
-        protected void TranslateY(float deltaY)
+        protected void TranslateModel(Vector3 deltas)
+        {
+            model.transform.Translate(deltas * modelConfigs.prefab.speedModifier.translation);
+            var currentPosition = model.transform.position;
+            currentPosition.x = Mathf.Clamp(currentPosition.x, modelConfigs.prefab.width.min, modelConfigs.prefab.width.max);
+            currentPosition.y = Mathf.Clamp(currentPosition.y, modelConfigs.prefab.height.min, modelConfigs.prefab.height.max);
+            currentPosition.z = Mathf.Clamp(currentPosition.z, modelConfigs.prefab.depth.min, modelConfigs.prefab.depth.max);
+            model.transform.position = currentPosition;
+        }
+
+        protected void TranslateCamera(Vector3 deltas)
         {
             var currentCameraPosition = transform.position;
             var newCameraYPosition =
-                currentCameraPosition.y - deltaY * cameraConfigs.speedModifier.translation;
+                currentCameraPosition.y - deltas.y * modelConfigs.camera.speedModifier.translation;
             currentCameraPosition.y =
-                Mathf.Clamp(newCameraYPosition, cameraConfigs.height.min, cameraConfigs.height.max);
+                Mathf.Clamp(newCameraYPosition, modelConfigs.camera.height.min, modelConfigs.camera.height.max);
+            var newCameraXPosition = currentCameraPosition.x + deltas.y * modelConfigs.camera.speedModifier.translation;
+            currentCameraPosition.x = Mathf.Clamp(newCameraXPosition, modelConfigs.camera.width.min, modelConfigs.camera.width.max);
+            currentCameraPosition.z = startingZEulerAngle;
+            transform.position = currentCameraPosition;
+        }
+        
+        [Obsolete("Deprecated, Use TranslateCamera(Vector3 deltas) instead")]
+        protected void TranslateCameraY(float deltaY)
+        {
+            var currentCameraPosition = transform.position;
+            var newCameraYPosition =
+                currentCameraPosition.y - deltaY * modelConfigs.camera.speedModifier.translation;
+            currentCameraPosition.y =
+                Mathf.Clamp(newCameraYPosition, modelConfigs.camera.height.min, modelConfigs.camera.height.max);
             currentCameraPosition.z = startingZEulerAngle;
             transform.position = currentCameraPosition;
         }
