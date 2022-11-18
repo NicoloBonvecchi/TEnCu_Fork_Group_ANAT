@@ -32,11 +32,11 @@ namespace Utility.CameraManager
 
         protected void Zoom(float deltaZoom)
         {
-            if (deltaZoom > 0)
-                _fieldOfView -= 1;
-            else if (deltaZoom < 0) _fieldOfView += 1;
+             if (deltaZoom > 0)
+                _fieldOfView -= cameraConfigs.speedModifier.zoom;
+            else if (deltaZoom < 0) _fieldOfView += cameraConfigs.speedModifier.zoom;
 
-            _fieldOfView = Mathf.Clamp(_fieldOfView, modelConfigs.camera.fieldOfView.min, modelConfigs.camera.fieldOfView.max);
+            _fieldOfView = Mathf.Clamp(_fieldOfView, cameraConfigs.fieldOfView.min, cameraConfigs.fieldOfView.max);
             cam.fieldOfView = _fieldOfView;
         }
 
